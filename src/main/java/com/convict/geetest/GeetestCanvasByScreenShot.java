@@ -18,12 +18,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author: Convict.Yellow
  * @date: 2020/8/12 11:12
- * @description: selenium识别极验滑动验证码(canvas)
+ * @description: selenium识别极验滑动验证码(canvas)，下载图片方式为全屏截图，截出缺口图、完整图
+ *
  * 1.下载缺口图、完整图、全页面图
  * 2.比较缺口图、完整图，获得移动距离
  * 3.根据移动距离，模拟真人鼠标移动
  */
-public class GeetestCanvas {
+public class GeetestCanvasByScreenShot {
 
     // 所有图片存储路径
     private static final String BASE_PATH = "D:/";
@@ -57,7 +58,7 @@ public class GeetestCanvas {
                 // 全局页面
                 byte[] pageBytes = driver.getScreenshotAs(OutputType.BYTES);
                 BufferedImage pageBI = ImageIO.read(new ByteArrayInputStream(pageBytes));
-                ImageIO.write(pageBI, "png", new File("page.png"));
+                ImageIO.write(pageBI, "png", new File(BASE_PATH + "page.png"));
 
                 // 设置完整图可见
                 driver.executeScript("document.getElementsByClassName('geetest_canvas_fullbg')[0].setAttribute('style', 'display: block')");
