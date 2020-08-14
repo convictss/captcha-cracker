@@ -1,0 +1,1 @@
+### Common Captcha Recognition Scheme
